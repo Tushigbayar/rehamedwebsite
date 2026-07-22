@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!-- ═══════════════════════════════════════════════════════
+     REHAMED — МЭДЭЭЛЭЛ — MCS загварын featured мэдээ + жагсаалт + sidebar, ангилалын шүүлтүүр
+
+     НИЙТЛЭГ БҮТЭЦ (бүх хуудсанд ижил):
+       <div id="site-nav">    ← цэс энд орж ирнэ (js/partials.js)
+       ...хуудасны контент...
+       <div id="site-footer"> ← footer энд орж ирнэ (js/partials.js)
+     Цэс/footer засах бол js/partials.js файлыг засна.
+═══════════════════════════════════════════════════════ -->
+
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Рехамед нэгдсэн эмнэлгийн мэдээ, нийтлэл, зөвлөгөө.">
+<title>Мэдээлэл — Рехамед нэгдсэн эмнэлэг</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+<link rel="shortcut icon" href="images/favicon/favicon.ico">
+<script>/* Dark mode гялбаа арилгах: CSS-ээс өмнө theme-ийг тавина */
+(function(){try{if(localStorage.getItem('rh-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();
+</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-nav"></div>
+<div class="page active" id="page-news">
+  <div class="page-hero">
+    <div class="page-hero-orb"></div>
+    <div class="breadcrumb" onclick="showPage('home')">Нүүр › <span>Мэдээлэл</span></div>
+    <h2>Мэдээ мэдээлэл</h2>
+    <p>Рехамед нэгдсэн эмнэлгийн сүүлийн үеийн мэдээ, нийтлэл, эрүүл мэндийн зөвлөгөө</p>
+  </div>
+  <section class="sec">
+
+    <!-- Filter bar -->
+    <div class="news-filter-bar" id="newsFilterBar">
+      <button class="news-filter-btn active" onclick="filterNews('all',this)">Бүгд</button>
+      <button class="news-filter-btn" onclick="filterNews('Шагнал, амжилт',this)">Шагнал, амжилт</button>
+      <button class="news-filter-btn" onclick="filterNews('Мэдээлэл',this)">Мэдээлэл</button>
+      <button class="news-filter-btn" onclick="filterNews('Эмчилгээ',this)">Эмчилгээ</button>
+      <button class="news-filter-btn" onclick="filterNews('Зөвлөгөө',this)">Зөвлөгөө</button>
+      <button class="news-filter-btn" onclick="filterNews('Сэргээн засах',this)">Сэргээн засах</button>
+      <button class="news-filter-btn" onclick="filterNews('Подкаст',this)">Подкаст</button>
+    </div>
+
+    <div class="news-page-layout">
+
+      <!-- Featured top card -->
+      <div class="news-featured" data-key="n1" onclick="showNews(this)" id="newsFeatured">
+        <div class="news-featured-img">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=85" alt="" loading="lazy">
+          <div class="news-featured-img-overlay"></div>
+        </div>
+        <div class="news-featured-body">
+          <div>
+            <div class="news-featured-cat">Шагнал, амжилт</div>
+            <div class="news-featured-title">ДЭМБ-ын гадаад хөтөлбөрийн үнэлгээгээр 2018 онд дахин баталгаажлаа</div>
+          </div>
+          <div class="news-featured-excerpt">Монголын анхны цогц лаборатори болох Рехамед нэгдсэн эмнэлэг Дэлхийн эрүүл мэндийн байгууллагын үнэлгээгээр дахин баталгаажсан. Энэ нь тусламж үйлчилгээний чанарыг олон улсын стандартад нийцүүлэн үзүүлж байгааг илтгэнэ.</div>
+          <div class="news-featured-meta">
+            <span><i class="ti ti-calendar"></i>2024.11.05</span>
+            <span><i class="ti ti-eye"></i>1,240 үзсэн</span>
+          </div>
+          <div class="news-read-more">Дэлгэрэнгүй унших <i class="ti ti-arrow-right"></i></div>
+        </div>
+      </div>
+
+      <!-- Main list + Sidebar -->
+      <div class="news-main-grid">
+
+        <!-- Horizontal news list -->
+        <div class="news-list" id="newsListEl">
+          <div class="news-hcard" data-key="n2" onclick="showNews(this)">
+            <div class="news-hcard-img"><img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=320&q=80" alt="" loading="lazy"><div class="news-hcard-overlay"></div></div>
+            <div class="news-hcard-body">
+              <div>
+                <div class="news-hcard-cat">Мэдээлэл</div>
+                <div class="news-hcard-title">Чихрийн шижин өвчнөөс урьдчилан сэргийлэх арга зүй</div>
+              </div>
+              <div class="news-hcard-meta"><span><i class="ti ti-calendar"></i>2025.11.16</span><span><i class="ti ti-eye"></i>3,480</span></div>
+            </div>
+          </div>
+          <div class="news-hcard" data-key="n3" onclick="showNews(this)">
+            <div class="news-hcard-img"><img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=320&q=80" alt="" loading="lazy"><div class="news-hcard-overlay"></div></div>
+            <div class="news-hcard-body">
+              <div>
+                <div class="news-hcard-cat">Подкаст</div>
+                <div class="news-hcard-title">Стресс яагаад үүсдэг вэ? Сэтгэцийн эмч Н. Оюу-Эрдэнэ тайлбарлав</div>
+              </div>
+              <div class="news-hcard-meta"><span><i class="ti ti-calendar"></i>2024.08.09</span><span><i class="ti ti-eye"></i>2,100</span></div>
+            </div>
+          </div>
+          <div class="news-hcard" data-key="n4" onclick="showNews(this)">
+            <div class="news-hcard-img"><img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=320&q=80" alt="" loading="lazy"><div class="news-hcard-overlay"></div></div>
+            <div class="news-hcard-body">
+              <div>
+                <div class="news-hcard-cat">Эмчилгээ</div>
+                <div class="news-hcard-title">Хавдрын эмчилгээний цогц тусламж үйлчилгээ ба түүний үр дүн</div>
+              </div>
+              <div class="news-hcard-meta"><span><i class="ti ti-calendar"></i>2024.07.20</span><span><i class="ti ti-eye"></i>1,870</span></div>
+            </div>
+          </div>
+          <div class="news-hcard" data-key="n5" onclick="showNews(this)">
+            <div class="news-hcard-img"><img src="https://images.unsplash.com/photo-1628348070889-cb656235b4eb?w=320&q=80" alt="" loading="lazy"><div class="news-hcard-overlay"></div></div>
+            <div class="news-hcard-body">
+              <div>
+                <div class="news-hcard-cat">Зөвлөгөө</div>
+                <div class="news-hcard-title">Зүрхний өвчнөөс урьдчилан сэргийлэх 5 чухал зөвлөгөө</div>
+              </div>
+              <div class="news-hcard-meta"><span><i class="ti ti-calendar"></i>2024.06.15</span><span><i class="ti ti-eye"></i>4,200</span></div>
+            </div>
+          </div>
+          <div class="news-hcard" data-key="n6" onclick="showNews(this)">
+            <div class="news-hcard-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=320&q=80" alt="" loading="lazy"><div class="news-hcard-overlay"></div></div>
+            <div class="news-hcard-body">
+              <div>
+                <div class="news-hcard-cat">Сэргээн засах</div>
+                <div class="news-hcard-title">Нурууны өвдөлтийг эмийн бус аргаар эмчлэх боломж</div>
+              </div>
+              <div class="news-hcard-meta"><span><i class="ti ti-calendar"></i>2024.05.10</span><span><i class="ti ti-eye"></i>2,950</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="news-sidebar">
+
+          <!-- Popular -->
+          <div class="news-sidebar-widget">
+            <div class="news-sidebar-title">Их уншигдсан</div>
+            <div class="news-sidebar-list">
+              <div class="news-sidebar-item" data-key="n5" onclick="showNews(this)">
+                <div class="news-sidebar-rank">01</div>
+                <div><div class="news-sidebar-item-title">Зүрхний өвчнөөс урьдчилан сэргийлэх 5 чухал зөвлөгөө</div><div class="news-sidebar-item-date"><i class="ti ti-calendar" style="font-size:11px"></i> 2024.06.15</div></div>
+              </div>
+              <div class="news-sidebar-item" data-key="n2" onclick="showNews(this)">
+                <div class="news-sidebar-rank">02</div>
+                <div><div class="news-sidebar-item-title">Чихрийн шижин өвчнөөс урьдчилан сэргийлэх арга зүй</div><div class="news-sidebar-item-date"><i class="ti ti-calendar" style="font-size:11px"></i> 2025.11.16</div></div>
+              </div>
+              <div class="news-sidebar-item" data-key="n6" onclick="showNews(this)">
+                <div class="news-sidebar-rank">03</div>
+                <div><div class="news-sidebar-item-title">Нурууны өвдөлтийг эмийн бус аргаар эмчлэх боломж</div><div class="news-sidebar-item-date"><i class="ti ti-calendar" style="font-size:11px"></i> 2024.05.10</div></div>
+              </div>
+              <div class="news-sidebar-item" data-key="n3" onclick="showNews(this)">
+                <div class="news-sidebar-rank">04</div>
+                <div><div class="news-sidebar-item-title">Стресс яагаад үүсдэг вэ? Сэтгэцийн эмч Н. Оюу-Эрдэнэ тайлбарлав</div><div class="news-sidebar-item-date"><i class="ti ti-calendar" style="font-size:11px"></i> 2024.08.09</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="news-sidebar-widget">
+            <div class="news-sidebar-title">Ангилал</div>
+            <div class="news-cat-chips">
+              <button class="news-cat-chip active" onclick="filterNews('all',this)">Бүгд</button>
+              <button class="news-cat-chip" onclick="filterNews('Шагнал, амжилт',this)">Шагнал</button>
+              <button class="news-cat-chip" onclick="filterNews('Мэдээлэл',this)">Мэдээлэл</button>
+              <button class="news-cat-chip" onclick="filterNews('Эмчилгээ',this)">Эмчилгээ</button>
+              <button class="news-cat-chip" onclick="filterNews('Зөвлөгөө',this)">Зөвлөгөө</button>
+              <button class="news-cat-chip" onclick="filterNews('Сэргээн засах',this)">Сэргээн засах</button>
+              <button class="news-cat-chip" onclick="filterNews('Подкаст',this)">Подкаст</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- .news-page-layout -->
+  </section>
+</div>
+<div id="site-footer"></div>
+<script src="js/partials.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

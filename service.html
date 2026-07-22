@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- ═══════════════════════════════════════════════════════
+     REHAMED — ҮЙЛЧИЛГЭЭНИЙ ДЭЛГЭРЭНГҮЙ — ?id=rehab/ct/cardio... параметрээр svcData-с render хийнэ
+
+     НИЙТЛЭГ БҮТЭЦ (бүх хуудсанд ижил):
+       <div id="site-nav">    ← цэс энд орж ирнэ (js/partials.js)
+       ...хуудасны контент...
+       <div id="site-footer"> ← footer энд орж ирнэ (js/partials.js)
+     Цэс/footer засах бол js/partials.js файлыг засна.
+═══════════════════════════════════════════════════════ -->
+
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Рехамед нэгдсэн эмнэлгийн эмчилгээ, үйлчилгээний дэлгэрэнгүй.">
+<title>Үйлчилгээ — Рехамед нэгдсэн эмнэлэг</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+<link rel="shortcut icon" href="images/favicon/favicon.ico">
+<script>/* Dark mode гялбаа арилгах: CSS-ээс өмнө theme-ийг тавина */
+(function(){try{if(localStorage.getItem('rh-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();
+</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-nav"></div>
+<div class="page active" id="page-service"><div id="svc-content"></div></div>
+<div id="site-footer"></div>
+<script src="js/partials.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

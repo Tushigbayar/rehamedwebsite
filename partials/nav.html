@@ -1,0 +1,66 @@
+<!-- ═══════════════════════════════════════════════════════
+     НИЙТЛЭГ ЦЭС (NAV) — БҮХ ХУУДАСНЫ ТОЛГОЙ ХЭСЭГ
+     Энэ файлыг зассны дараа doc/README дагуу js/partials.js-ийг
+     ДАХИН ҮҮСГЭХ шаардлагатай (эсвэл 2 файлыг зэрэг засна).
+     Цэсний бүтэц:
+       • Нүүр, Бидний тухай — шууд холбоос
+       • Ажилтан / Салбарууд / Үйлчилгээнүүд — dropdown цэс
+       • data-page атрибут = идэвхтэй хуудсыг тодруулахад ашиглана
+═══════════════════════════════════════════════════════ -->
+<nav class="nav">
+  <a class="nav-logo" onclick="showPage('home')">
+    <img src="images/logo.png" alt="Рехамед" id="logoImg" style="display:block"
+         onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex'">
+    <div id="logoFallback" style="display:none;align-items:center;gap:8px">
+      <div style="width:36px;height:36px;background:var(--red);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:700;font-family:'Playfair Display',serif">Р</div>
+      <span style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--navy)">Реха<span style="color:var(--red)">мед</span></span>
+    </div>
+  </a>
+  <ul class="nav-menu" id="navMenu">
+    <li><a onclick="showPage('home')" data-page="index.html">Нүүр</a></li>
+    <li><a onclick="showPage('about')" data-page="about.html">Бидний тухай</a></li>
+    <li id="ddAjiltan">
+      <a>Ажилтан <span class="arr">▾</span></a>
+      <ul class="dropdown">
+        <li><a onclick="showStaff('management')"><i class="ti ti-crown"></i>Удирдлага</a></li>
+        <li><a onclick="showStaff('surgery')"><i class="ti ti-stethoscope"></i>Мэс засалчид</a></li>
+        <li><a onclick="showStaff('equipment')"><i class="ti ti-device-heart-monitor"></i>Тоног төхөөрөмж</a></li>
+        <li class="dd-div"></li>
+        <li><a onclick="showStaff('all')"><i class="ti ti-users"></i>Бүх ажилтан</a></li>
+      </ul>
+    </li>
+    <li id="ddSalbar">
+      <a>Салбарууд <span class="arr">▾</span></a>
+      <ul class="dropdown">
+        <li><a onclick="showBranch('gvals')"><i class="ti ti-building-hospital"></i>Рехамед нэгдсэн эмнэлэг</a></li>
+        <li><a onclick="showBranch('negdsen')"><i class="ti ti-building-hospital"></i>Novamed — Гоо заслын эмнэлэг</a></li>
+        <li><a onclick="showBranch('clinic')"><i class="ti ti-building-hospital"></i>Рехамед клиник</a></li>
+      </ul>
+    </li>
+    <li id="ddUilchilgee">
+      <a>Үйлчилгээнүүд <span class="arr">▾</span></a>
+      <ul class="dropdown">
+        <li><a onclick="showServiceByKey('rehab')"><i class="ti ti-wheelchair"></i>Сэргээн засах эмчилгээ</a></li>
+        <li><a onclick="showServiceByKey('ct')"><i class="ti ti-scan"></i>Дүрс оношилгоо</a></li>
+        <li><a onclick="showServiceByKey('cardio')"><i class="ti ti-heartbeat"></i>Зүрх судасны эмчилгээ</a></li>
+        <li><a onclick="showServiceByKey('neuro')"><i class="ti ti-brain"></i>Мэдрэлийн эмчилгээ</a></li>
+        <li><a onclick="showServiceByKey('surgery')"><i class="ti ti-scalpel"></i>Мэс засал</a></li>
+        <li><a onclick="showServiceByKey('chemo')"><i class="ti ti-ribbon-health"></i>Хавдрын эмчилгээ</a></li>
+        <li class="dd-div"></li>
+        <li><a onclick="showServiceByKey('prev')"><i class="ti ti-shield-check"></i>Урьдчилан сэргийлэх</a></li>
+        <li><a onclick="showServiceByKey('ward')"><i class="ti ti-bed"></i>Хэвтэн эмчлэх</a></li>
+      </ul>
+    </li>
+    <li><a onclick="showPage('insurance')" data-page="insurance.html">Эрүүл мэндийн даатгал</a></li>
+    <li><a onclick="showPage('news')" data-page="news.html">Мэдээлэл</a></li>
+    <li><a onclick="showPage('contact')" data-page="contact.html">Холбоо барих</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:4px">
+  <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" title="Өдөр/Шөнийн горим">
+    <i class="ti ti-moon" id="themeIcon"></i>
+  </button>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Цэс нээх">
+    <span></span><span></span><span></span>
+  </button>
+  </div>
+</nav>
